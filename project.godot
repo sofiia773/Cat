@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Cat"
+run/main_scene="uid://djlt203gby8bs"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/midi/plugin.cfg")
 
 [physics]
 
