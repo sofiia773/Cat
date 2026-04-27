@@ -125,6 +125,22 @@ stretch_mode = 6
 
 [node name="Synth" type="AudioStreamPlayer" parent="." unique_id=52239707]
 
+[node name="PitchSlider" type="HSlider" parent="." unique_id=343723057]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044000003
+anchor_top = 0.117000006
+anchor_right = 0.143
+anchor_bottom = 0.117000006
+offset_left = -6.644005
+offset_top = -9.518005
+offset_right = 0.40699768
+offset_bottom = 10.481995
+min_value = 0.5
+max_value = 2.0
+step = 0.01
+value = 1.5
+
 [connection signal="pressed" from="UpButton" to="." method="_on_up_button_pressed"]
 [connection signal="pressed" from="DownButton" to="." method="_on_down_button_pressed"]
 [connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
