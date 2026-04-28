@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvyimkssvjx2o"
-path="res://.godot/imported/cat5.jpg-d8808970ded001188260923ddd9d621a.ctex"
+uid="uid://dqsr75p4e37gj"
+path="res://.godot/imported/nyan-cat.png-207d4febbec35fb1bd7e78185d4122b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat5.jpg"
-dest_files=["res://.godot/imported/cat5.jpg-d8808970ded001188260923ddd9d621a.ctex"]
+source_file="res://assets/nyan-cat.png"
+dest_files=["res://.godot/imported/nyan-cat.png-207d4febbec35fb1bd7e78185d4122b3.ctex"]
 
 [params]
 
