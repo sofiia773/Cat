@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://djlt203gby8bs"]
 
 [ext_resource type="Script" uid="uid://dp30byn0tuwud" path="res://main.gd" id="1_glv2v"]
-[ext_resource type="Texture2D" path="res://assets/nyan-cat.jpg" id="2_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://dwt06fotqrq8f" path="res://assets/nyan-cat.png" id="2_uu6xs"]
+[ext_resource type="AudioStream" uid="uid://batsfw7xn3h6s" path="res://assets/cat meow.mp3" id="3_r0du0"]
 
 [node name="Main" type="Control" unique_id=142373588]
 layout_mode = 3
@@ -25,6 +26,22 @@ offset_right = 7.0
 offset_bottom = -0.038024902
 
 [node name="Stars" type="Node2D" parent="." unique_id=393936788]
+
+[node name="NyanCat" type="TextureRect" parent="." unique_id=777765714]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uu6xs")
+stretch_mode = 5
 
 [node name="Synth" type="AudioStreamPlayer" parent="." unique_id=52239707]
 
@@ -137,20 +154,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "*"
 
-[node name="NyanCat" type="TextureRect" parent="." unique_id=726753518]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.32900003
-anchor_top = 0.24400002
-anchor_right = 0.587
-anchor_bottom = 0.71400005
-offset_left = -22.679016
-offset_top = -12.576004
-offset_right = 0.36297607
-offset_bottom = 0.04397583
-texture = ExtResource("2_uu6xs")
-stretch_mode = 5
-
 [node name="CatImage" type="TextureRect" parent="." unique_id=1503852554]
 visible = false
 layout_mode = 1
@@ -167,6 +170,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 stretch_mode = 5
+
+[node name="MeowPlayer" type="AudioStreamPlayer" parent="." unique_id=68160435]
+stream = ExtResource("3_r0du0")
 
 [connection signal="pressed" from="DangerButton" to="." method="_on_danger_button_pressed"]
 [connection signal="pressed" from="UpButton" to="." method="_on_up_button_pressed"]

@@ -6,6 +6,7 @@ extends Control
 @onready var background = $Background
 @onready var stars_node = $Stars
 @onready var nyan_cat = $NyanCat
+@onready var meow = $MeowPlayer   # 🔊 нове
 
 var playback
 var sample_rate = 44100
@@ -48,10 +49,12 @@ func _ready():
 	$RightButton.pressed.connect(_on_RightButton_pressed)
 	$DangerButton.pressed.connect(_on_DangerButton_pressed)
 
+	# 👉 ЦЕНТРАЛЬНА КНОПКА
+	$CenterButton.pressed.connect(_on_CenterButton_pressed)
+
 	# 🎚 slider
 	pitch_slider.value_changed.connect(_on_PitchSlider_value_changed)
 
-	# початково
 	cat_image.visible = false
 	nyan_cat.visible = false
 
@@ -62,12 +65,12 @@ func _ready():
 	print("READY")
 
 func _process(delta):
-	# 🔊 звук
+	# 🔊 м’який звук
 	if playback != null:
 		var frames = playback.get_frames_available()
 
 		for i in range(frames):
-			var sample = sign(sin(phase * TAU))
+			var sample = sin(phase * TAU) * 0.2
 			playback.push_frame(Vector2(sample, sample))
 
 			phase += (frequency * pitch_scale) / sample_rate
@@ -93,8 +96,8 @@ func _process(delta):
 
 	# 🐱 nyan пульсація
 	if nyan_mode:
-		nyan_phase += delta * 3.0
-		var scale = 1.0 + sin(nyan_phase) * 0.2
+		nyan_phase += delta * 1.5
+		var scale = 1.0 + sin(nyan_phase) * 0.05
 		nyan_cat.scale = Vector2(scale, scale)
 
 # ⭐ створення зірки
@@ -118,7 +121,7 @@ func create_star():
 		"phase": randf() * TAU
 	})
 
-# 🐱 звичайні коти
+# 🐱 показ кота
 func show_cat(index):
 	if nyan_mode:
 		return
@@ -147,28 +150,26 @@ func _on_RightButton_pressed():
 func _on_PitchSlider_value_changed(value):
 	pitch_scale = value
 
-# 🔴 NYAN MODE (ВИПРАВЛЕНО)
+# 🔊 CENTER BUTTON → МЯУ
+func _on_CenterButton_pressed():
+	print("MEOW 🐱")
+	meow.play()
+
+# 🔴 NYAN MODE
 func _on_DangerButton_pressed():
 	print("NYAN MODE")
 
 	nyan_mode = true
 
-	# сховати звичайного кота
 	cat_image.visible = false
-
-	# показати nyan
 	nyan_cat.visible = true
 
-	# розмір
 	nyan_cat.size = Vector2(300, 300)
 
-	# центр екрана
 	var screen = get_viewport_rect().size
 	nyan_cat.position = screen / 2 - nyan_cat.size / 2
 
-	# поверх всього
 	nyan_cat.z_index = 100
 
-	# звук
 	frequency = 600
 	pitch_scale = 1.5
