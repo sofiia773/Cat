@@ -1,4 +1,4 @@
-# 🐱 Nyan Cat Synth Project
+# 🐱 Cat Project
 
 # Description
 
